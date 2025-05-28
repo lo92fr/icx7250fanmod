@@ -376,6 +376,14 @@ After adding the capacitor, and also some software filtering, I achieve to have 
 
 I was never able to read signal bellow 5500 RPM correctly, infact I was able to downspeed the Mechatronic fans as low as around 4200 RPM.
 
+This is how I setup the circuitry for resistor / capacitor for tachometer reading.
+My first idea was to not have to use a breadboard, and not even use a dedicated circuit board as I want to make things fast.
+![WhatsApp Image 2025-05-28 à 16 57 01_93a221a1](https://github.com/user-attachments/assets/7c769bf0-6fe0-4568-98e6-eeed83d97bb7)
+
+So I try to solder resistor and capacitor directly on wire line, and isolate circuitry using ...
+If I have it to be redone, I will certainly review this design because at the end capacitor are group in a small area, and this seems to introduce more noise in signal.
+
+
 ### Other PWM and Tachometer considerations
 
 I've used the Mechatronic fan that come from the previous ownwer.
