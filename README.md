@@ -183,9 +183,39 @@ All of this features will be exposed to a Web site management interface using th
 There will be a captive portal to enable setup of the ESP32 wifi, as weel to do some on-air update.
 
 
+### Basic full level schema
+```
+|----------|
+| ICX 7250 |
+| PSU      |
+|----------|
+     |
+     |-------------------------------------------------------|
+    12V Rail                                                 |
+     |                                                       |
+     |                       |-------|                       |
+     |                       |       |                       |
+     |                       |       |                       |
+     |                       |       |--------------- Mosfet Driver ------- Fan Group 1 (Rear)
+|----------|                 |       |
+| Voltage  |                 | Esp32 |--------------- Mosfet Driver ------- Fan Group 2 (Rear) ---|----- Fan2-1
+| Regulator|---- 3.3v--------|       |                                                            |----- Fan2-2
+|----------|                 |       |--------------- Fan Header 1                                |----- Fan2-3
+                             |       |--------------- Fan Header 2                                          |
+|-----------|                |       |--------------- Fan Header 3                                          |
+|           |                |       |                                                                      |
+|  DHT-22   |----------------|       |---------------- Tach Input 1 --------|                               |
+|           |                |       |---------------- Tach Input 2 --------|-------------------------------|
+|-----------|                |       |---------------- Tach Input 3 --------|
+                             |-------|
+```
 
 
-
+- ICX 7250 PSU will be used to get raw 12V voltage.
+- A voltage regulator will be used to downscaler 12V voltage to 3.3V usable for esp32.
+- 2 Mofset driver will be feed from GPIO output to deliver PWM signal to the mofset, and so regulated voltage to the fan group, enable us to modulate the RPM of fan group.
+- 3 GPIO input will be used to deliver PWM signal to each 3 existing fan header on the ICX7250 to fool the fan RPM detection.
+- 2 GPIO input will be used to read the yellow tachometer wire from the existing fan to verify the RPM of the fans.
 
 
 
