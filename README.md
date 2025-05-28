@@ -305,6 +305,86 @@ Code to generate the PWM signal will be describe later.
 ![WhatsApp Image 2025-05-28 à 16 57 01_409ada3b](https://github.com/user-attachments/assets/3e9bb69c-2537-4e9c-b8f2-85a5786c6b41)
 
 
+### DHT22
+
+DHT22 will need 3 wire connection.
+You will need Red and Black wire comming from the 3.3v rail we get from the voltage regulator.
+We will also need a Yellow wire that will be connected to a GPIO input pin on the Esp32.
+
+Also notes that you will need a pull-up resistor between the red write (3.3v) and the Yellow wire (signal to gpio).
+The resistor could have value between 4,7 kOhm to 10kOhm.
+
+Also notes that wire of DHT22 can be different in regards to DHT22 package delivery. You can have 3 pin and 4 pin version.
+Take a look to this page to help you : https://www.upesy.fr/blogs/tutorials/esp32-dht22-am2302-humidity-temperature-sensor-with-arduino-code?srsltid=AfmBOor08pP1xIK-uycE1Stwxz_ntsxQneosMDtc13h-1sgAEJhuZX2v
+
+
+![WhatsApp Image 2025-05-28 à 16 57 02_a62f7cc5](https://github.com/user-attachments/assets/c52c0329-4127-4ca7-92d9-0bce3c40d5eb)
+
+
+### 3.3V alimentation
+
+You will need many derivation on the 3.3V rail :
+- Wire coming from the voltage regulator.
+- Wire to the ESP32 3.3V and GND pin to power the ESP32.
+- Wire to the DHT 22 to power it.
+- Wire to the capacitor/resitor electronic assembly we use for tachometer reading.
+
+The best I've found is to solder the different wire together, and then use heat shrink tubing to isolate the wire from metal parts.
+I've put all this connection in the little space behind the POE connector on the back of the unit.
+    
+![WhatsApp Image 2025-05-28 à 16 57 03_adeeae21](https://github.com/user-attachments/assets/6976a45e-b3a3-4b30-a8f9-75fbcbf51490)
+
+### Tachometer yellow cable reading
+
+This is probably the most difficult part.
+The signal comming from the yellow fan wire enable us to read the current RPM speed.
+The signal is generally a square signal, voltage and frequency may vary from fan brand to another.
+We can read this signal from a GPIO pin.
+
+First we need two make sure that voltage is ok for the ESP32. 
+For memory, esp32 can accept 3.3V voltage on their pin.
+Don't try to feed 12V voltage, or you will fry immedialty your Esp32.
+
+If you voltage is not correct, you will have two use a voltage divider.
+This generally consist of two resistor, one connect to your 3.3v input, the other connect to GND.
+At the middle point, you would connect your fan yellow wire, and your GPIO pin.
+Something like this:
+
+```
+3.3V =========== R1 =========== Yellow fan Pin ------------ R2 -------- GND
+                                      |
+                                      | 
+                                    GPIO Pin
+```
+
+
+I won't give there any value for R1 and R2 as it will depend on you fan spec.
+So please look on internet for starting value, and then check with a multimeter that voltage are correct.
+
+On my side, voltage was already ok since the start.
+So all I have to done is to add a pull up resistor to the 3.3V power because tachometer signal is open collector, so you will need this pullup to prevent false reading.
+I've also add a little capacitor (around 4,7nf) ground to the gnd to smooth the signal.
+This can help to read the signal at lower speed.
+
+The main troubles is that PWN signal from the mofset driver will introduce noise into the tachometer signal.
+So it can be very hard to find a good combinaison of capacitor / resistor to read the signal properly.
+At first, I was only able to read the signal correctly between 10 000 RPM and 12 000 RPM.
+After adding the capacitor, and also some software filtering, I achieve to have correct reading between 6 000 RPM and 12 000 RPM.
+
+I was never able to read signal bellow 5500 RPM correctly, infact I was able to downspeed the Mechatronic fans as low as around 4200 RPM.
+
+### Other PWM and Tachometer considerations
+
+I've used the Mechatronic fan that come from the previous ownwer.
+This is good fan but only with 3 wire connection: +12V,GND, and tachometer signal.
+A better solution would be to have a fan with 4 wire connection : +12V,GND, tachometer signal, and PWN signal.
+
+With such a fan:
+- You can remove the mofset driver, and drive the fan directly from the PWM signal.
+- Possibly, the tachometer signal will be far less noisy that we one we have with mofset driver.
+
+But I've don't test this solution as I've don't have this 4 wire fan.
+And don't even verify that Mechatronic have such reference in stock.
 
 
 ### The Web interface
