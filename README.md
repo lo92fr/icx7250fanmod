@@ -9,6 +9,24 @@ I'm myself have some wrong things happens durring this mods.
 So lets be warn that it can cost new to buy a new switch if the worst case.
 And that of course, I won't assume any dommage in regards of modification you've made !
 
+## parts 
+
+- an Esp32 board, any brand should make it.
+- 2 mosfet driver (one for each fan group) :
+   ICQUANZX 5PCS DC 5V-36V 15A (Max 30A) 400 W Dual MOSFET
+   https://www.amazon.fr/dp/B07VRCXGFY?ref=ppx_yo2ov_dt_b_fed_asin_title
+
+- 1 voltage regulator:
+   ARCELI 5 Pcs Ultra Petit DC-DC 3A Puissance Module abaisseur réglable Convertisseur Buck 24V À 12V 9V 5V 3V Arduino
+   https://www.amazon.fr/dp/B07MY2XP21?ref=ppx_yo2ov_dt_b_fed_asin_title
+
+- 1 DHT 22 temperature and humidity sensor (optional):
+   Lot de 5 capteurs de température DHT/2302-22 modules - Capteur d'humidité - Avec platine et câble - 3,3-5,5 V - Compatible avec Arduino, DHT, capteur numérique de température et d'humidité
+   https://www.amazon.fr/dp/B0D25WCHWQ?ref=ppx_yo2ov_dt_b_fed_asin_title
+
+- Some resistor : mainly 4,7 kOhm.
+- Some capacitor : mainly 4,7 nF and also 10uF and/or 47uF electrolytic for mofset output.
+
 ## Introduction
 
 I've owned a Ruckus ICX7250-48-p since now 2/3 years.
@@ -149,8 +167,22 @@ Of course, switch was powered offline before the soldering.
 But because of soldering temperature, or perharps becauses of soldering electricity dischard, I've killed the first fan header.
 After this, the header only reports fan as running as "Fan 1 Speed at 164 RPM" :(
 
+I'm not totally sure of the reason of this failure, but it seems also that existing fan headers will not be able to give sufficient power for all 5 fans.
 
-### 
+
+### The full scheme Idea
+
+The final idea was to completly replace the existing fan logic mangement inside the Ruckus OS.
+With the mod, we will be able:
+- To foul the existing header, let the believe that there is some fan attached to them even if not the case.
+- To manage two group of fan, one for the existing rear fan, and one for the new two top fan, enable two manage RPM speed from the ESP32.
+- To verify the fan speed of the rear fan and display it using the ESP32.
+- And finally two have temperature and humidity measurement using the DTH22 sensors.
+
+All of this features will be exposed to a Web site management interface using the ESP32 functionnality.
+There will be a captive portal to enable setup of the ESP32 wifi, as weel to do some on-air update.
+
+
 
 
 
