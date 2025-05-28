@@ -217,6 +217,96 @@ There will be a captive portal to enable setup of the ESP32 wifi, as weel to do 
 - 3 GPIO input will be used to deliver PWM signal to each 3 existing fan header on the ICX7250 to fool the fan RPM detection.
 - 2 GPIO input will be used to read the yellow tachometer wire from the existing fan to verify the RPM of the fans.
 
+### The differents steps of the mode
+
+#### Fan header modification
+
+You first need to modify the fan header connector.
+We will only keep the yellow wire as we will power the fan through the mofset driver.
+
+First unplug the red, black and yellow connector from the plug.
+For this, you can use a little flat screwdriver to push the connection from the hole on the connector.
+You will need after this to unsolder the yellow wire from the metal connector, and solder a new one with gpio connector to plug into the esp32.
+This is direct connection, we don't need any electronic circuit adapter for this connection.
+
+![WhatsApp Image 2025-05-28 à 16 57 00_7e351f3e](https://github.com/user-attachments/assets/d8b38ce2-bf4b-4832-a857-f2f39661493d)
+
+![WhatsApp Image 2025-05-28 à 16 57 00_75b99067](https://github.com/user-attachments/assets/733c7685-aea4-405f-a188-be8b617f8ea6)
+
+![WhatsApp Image 2025-05-28 à 16 57 00_20b7042a](https://github.com/user-attachments/assets/8c356363-1b74-44de-b68a-ed6ea75be225)
+
+#### Voltage regulator
+
+Voltage regulator will give us 3.3v from 12v ICX7250 PSU rail.
+I make the choice to not use available 3.3v from ICX7250 PSU.
+I take the 12V from the connector comming from the PSU to the main board.
+
+![WhatsApp Image 2025-05-28 à 16 57 00_f53cb117](https://github.com/user-attachments/assets/6ec341fd-0f2e-487f-abfa-3a2b05b70978)
+
+![WhatsApp Image 2025-05-28 à 16 57 00_a4d894be](https://github.com/user-attachments/assets/0c23fd22-c34e-47b0-b924-bc32f068fbd1)
+
+![WhatsApp Image 2025-05-28 à 16 57 00_6fa28c7c](https://github.com/user-attachments/assets/3600c672-9c97-4bcc-bbec-eb49a4fe92dd)
+
+![WhatsApp Image 2025-05-28 à 16 57 00_a4100fe5](https://github.com/user-attachments/assets/d33882e9-a56a-4f9d-a7e6-3886f67b3293)
+
+I've cutted the yellow and black wire on the first row connection, and derive additional wire.
+The wire I used was comming from KNX wire, which is 0.80 mm2 section, rigid wire.
+I would recommand to use rigid wire as it will be more simple to organized stable connection inside your ICX7250.
+
+After this, you will need to soldier the cable comming from the PSU derivation to your voltage regulator.
+
+![WhatsApp Image 2025-05-28 à 16 57 01_d6f3f89e](https://github.com/user-attachments/assets/f485b3fc-9cac-4d3d-9e7e-fb25fef6a10c)
+
+On the bottom level, you can see 2 black and 2 yellow wire.
+One are comming from the PSU derivation.
+The other will be used later to power the Mofset driver.
+
+On the top level, you have and red/black wire pair which is your 3.3v output.
+
+You will need to set you voltage regulator to the good voltage.
+Take your multimeter on the red/black output, and use a screw driver to turn the little resistor (the one just under the red wire) until you have the good voltage.
+
+![WhatsApp Image 2025-05-28 à 16 57 01_6f222808](https://github.com/user-attachments/assets/7ac4f045-6b9b-468e-bfcf-f57dcb348210)
+
+The voltage regulator can be put bellow the PSU wire, maitains using double-stick tape
+
+![WhatsApp Image 2025-05-28 à 16 57 02_a1bbbdd4](https://github.com/user-attachments/assets/6e935c27-cd4c-4901-a79f-8e8c5f0d672d)
+
+
+#### Mosfet connection
+
+![WhatsApp Image 2025-05-28 à 16 57 01_ce346ff7](https://github.com/user-attachments/assets/e5944ebf-323e-465c-8d38-432eab986bfd)
+
+
+You will have:
+
+- On the right, wire comming from the voltage regulator (12V PSU rail).
+- On the left, wire going to the fan. You will need to add a electrolytic capacitor to smooth the voltage on the output.
+- On the downside, the command wire coming from the ESP32 pin output.
+
+About capacitor choice : 
+I have no good advice to give about it. 
+You will have to try various capacity, possibly from 1uf to 470uf.
+Upper value will better smooth the signal, lower capacity will give better response time.
+
+Without capacitor, you will certainly observe behaviour like:
+- Whistle comming from the fan at lower RPM frequency, because of resonance inside fan wire.
+- Difficulty to operate at lower RPM speed.
+
+### Fan header fool
+
+ICX 7250 will not work if at least one fan is detected to work correctly.
+The check is done as soon as the ICX 7250 finish to boot, and ICX will shutdown if it not detectd any fan.
+
+Two prevent this, we can feed a PWN signal to the ICX 7250 fan header from the ESP32.
+You will just need to attach a PWM GPIO output pin to the fan header yellow wire as describe before.
+Code to generate the PWM signal will be describe later.
+
+![WhatsApp Image 2025-05-28 à 16 57 01_409ada3b](https://github.com/user-attachments/assets/3e9bb69c-2537-4e9c-b8f2-85a5786c6b41)
+
+
+
+
 ### The Web interface
 
 For now, the interface is for advanced user, enable to modify frequency and duty cycle.
@@ -243,19 +333,9 @@ And finally an edit page that enables to modify file system on the esp32:
 
 
 
-![WhatsApp Image 2025-05-28 à 16 57 00_7e351f3e](https://github.com/user-attachments/assets/d8b38ce2-bf4b-4832-a857-f2f39661493d)
-
-
-![WhatsApp Image 2025-05-28 à 16 57 00_75b99067](https://github.com/user-attachments/assets/733c7685-aea4-405f-a188-be8b617f8ea6)
 
 ![WhatsApp Image 2025-05-28 à 16 57 00_0fbf6045](https://github.com/user-attachments/assets/210c701c-df29-4e82-8062-79e6b9c639ea)
-
-![WhatsApp Image 2025-05-28 à 16 57 00_20b7042a](https://github.com/user-attachments/assets/8c356363-1b74-44de-b68a-ed6ea75be225)
 
 ![WhatsApp Image 2025-05-28 à 16 57 00_b389e760](https://github.com/user-attachments/assets/2fa067c5-f248-4fa3-a5a1-96d8d2c9dd1b)
 
 ![WhatsApp Image 2025-05-28 à 16 57 00_c294588a](https://github.com/user-attachments/assets/62d2f6eb-631c-4a74-80ac-dfac4d052c12)
-
-
-
-
