@@ -34,14 +34,15 @@ This is a very great swith, 48 gigabit port, POE, and 8 SFP+ port enabling 10gb 
 But one matter about this switch, like many others, is that is mainly a data center switch, with very loud fan by default.
 
 By default, the switch come with 3 Foxconn fan:
+```
 Brand : Foxconn
 Model : PIA040H12P
 Size  : 40 mm x 40 mm x 28 mm
 RPM   : 18000 tr/min
 Noise : 55.00 dB (A)
 CFM   : 24.03 CFM
-
-![WhatsApp Image 2025-05-28 à 16 57 00_db6bd5dc](https://github.com/user-attachments/assets/93780589-8178-4ea5-9a74-0bc924a8c2ed =200x200 )
+```
+![WhatsApp Image 2025-05-28 à 16 57 00_db6bd5dc](https://github.com/user-attachments/assets/93780589-8178-4ea5-9a74-0bc924a8c2ed)
 
 
 As you can see, high CFM, but with also very high RPM, and so heavy high frequency noise!
@@ -49,12 +50,13 @@ As you can see, high CFM, but with also very high RPM, and so heavy high frequen
 Mine was already have a first fan mode made by the first owner of the swith.
 The 3 fan was replace by this model:
 
+```
 Brand : Mechatronics
 Model : MR4020X12B1-RSR
 RPM   : 12000 tr/min
 Noise : 41,0dB(A)
 CFM   : 17,3CFM (0,484m³/min)
-
+```
 ![WhatsApp Image 2025-05-28 à 16 57 00_96b30e04](https://github.com/user-attachments/assets/745d29bf-3efd-4212-8b11-37a61835d91d)
 
 As you can see, this model is running slower : 12000 RPM at max speed, but still have a good CFM value : 17,3, and lower noise production : 41,0 dB.
@@ -118,13 +120,14 @@ Comming to summer time, between May to September, the Switch start to toggle to 
 When previous owner sell me the switch, it add an extra sunon fan, but tell me it never take time to install it.
 
 The fan spec is:
+```
 Brand : Sunon 
 Model : MF60151V3-1000U-A99
 Size  : 60x60x15mm
 RPM   : 3000 RPM
 Noise : 21.3 dBA
 CFM   : 17.6CFM
-
+```
 
 ![WhatsApp Image 2025-05-28 à 16 57 00_b2c32ff3](https://github.com/user-attachments/assets/441b6d54-a9cb-4125-b5ed-c445862de63c)
 
@@ -385,6 +388,54 @@ With such a fan:
 
 But I've don't test this solution as I've don't have this 4 wire fan.
 And don't even verify that Mechatronic have such reference in stock.
+
+### Fan Performance comparison
+
+You will find bellow some performance comparaison that I've made in regards to the different fan brand.
+- RPM was verified using : @tobecheck
+- CMF was measured using an RUZIZAO Anemometer : https://www.amazon.fr/dp/B0BGKBJ3VT?ref=ppx_yo2ov_dt_b_fed_asin_title&th=1
+  CMF is not very accurate, but it can give a good idea of what we can have.&
+- Db is take from iPhone xxx DB Meter application : Db1 around 5cm, and Db2 around 30cm.
+
+#### 12000 RPM / 17,3 CFM / Mechatronic
+
+RPM       | Voltage | Db   | Db (2)  | Fréq     | Centre | Mi  | Bord | Centre C | Mi C | Bord C | M/S (1) | M/S (2) | Débit (1) | Débit (2) | Déb(1) m3/s | Déb(2) m3/s | CFM (1) | CFM (2) | CFM Moy
+----------|---------|-------|--------|----------|--------|-----|------|----------|------|--------|---------|---------|-----------|-----------|-------------|-------------|---------|---------|---------
+2915 RPM  | 3,25 V  | 46 Db | 40 Db  | 800 Hz   | 2      | 1.2 | 1    | 0.5      | 0.6  | 0.25   | 1.2     | 1.35    | 0.00192   | 0.00216   | 0.1152      | 0.1296      | 4.0682  | 4.5768  |
+11600 RPM | 11,8 V  | 68 Db | 60 Db  | 1900 Hz  | 6.8    | 5.3 | 3.3  | 1.7      | 2.65 | 0.825  | 4.08    | 5.175   | 0.006528  | 0.00828   | 0.39168     | 0.4968      | 13.8320 | 17.5443 | 15.6882
+11820 RPM | 12,08 V |       |        |          | 7.4    | 5.2 | 2.6  | 1.85     | 2.6  | 0.65   | 4.44    | 5.1     | 0.007104  | 0.00816   | 0.42624     | 0.4896      | 15.0525 | 17.2901 | 16.1713
+5020 RPM  | 4,87 V  | 47 Db | 45 Db  | 800 Hz   | 3      | 2.5 | 1.5  | 0.75     | 1.25 | 0.375  | 1.8     | 2.375   | 0.00288   | 0.0038    | 0.1728      | 0.228       | 6.1024  | 8.0517  | 7.0771
+7000 RPM  | 6,65 V  | 54 Db | 50 Db  | 600 Hz   | 4.6    | 3.2 | 1.8  | 1.15     | 1.6  | 0.45   | 2.76    | 3.2     | 0.004416  | 0.00512   | 0.26496     | 0.3072      | 9.3570  | 10.8487 | 10.1028
+8000 RPM  | 7,66 V  | 55 Db | 52 Db  | 2100 Hz  | 5.2    | 3.2 | 2.2  | 1.3      | 1.6  | 0.55   | 3.12    | 3.45    | 0.004992  | 0.00552   | 0.29952     | 0.3312      | 10.5774 | 11.6962 | 11.1368
+9000 RPM  | 8,69 V  | 60 Db | 55 Db  | 2400 Hz  | 5.8    | 4   | 2.4  | 1.45     | 2    | 0.6    | 3.48    | 4.05    | 0.005568  | 0.00648   | 0.33408     | 0.3888      | 11.7979 | 13.7303 | 12.7641
+10000 RPM | 9,84 V  | 65 Db | 58 Db  | 800 Hz   | 6.2    | 4.2 | 3    | 1.55     | 2.1  | 0.75   | 3.72    | 4.4     | 0.005952  | 0.00704   | 0.35712     | 0.4224      | 12.6116 | 14.9169 | 13.7642
+
+#### 18000 RPM / 24 CFM / 55 Db / Foxconn
+
+RPM | Voltage | Db | Db (2) | Fréq | Centre | Mi | Bord | Centre C | Mi C | Bord C | M/S (1) | M/S (2) | Débit (1) | Débit (2) | Déb(1) m3/s | Déb(2) m3/s | CFM (1) | CFM (2) | CFM Moy
+----|---------|----|--------|------|--------|----|------|----------|------|--------|---------|---------|-----------|-----------|-------------|-------------|---------|---------|---------
+16500 RPM | 12,08 V | 78 Db | 73 Db | 1400 Hz | 12.4 | 8 | 5 | 3.1 | 4 | 1.25 | 7.44 | 8.35 | 0.011904 | 0.01336 | 0.71424 | 0.8016 | 25.2231 | 28.3082 | 26.7657
+16100 RPM | 11,45 V | 80 Db | 74 Db | 1400 Hz | 12.4 | 8.6 | 4.5 | 3.1 | 4.3 | 1.125 | 7.44 | 8.525 | 0.011904 | 0.01364 | 0.71424 | 0.8184 | 25.2231 | 28.9015 | 27.0623
+3000 RPM | 3,311 V | 43 Db | 40 Db | 6000 Hz | 2.3 | 1.7 | 1 | 0.575 | 0.85 | 0.25 | 1.38 | 1.675 | 0.002208 | 0.00268 | 0.13248 | 0.1608 | 4.6785 | 5.6786 | 5.1785
+5000 RPM | 3,57 V | 48 Db | 45 Db | | 4 | 3 | 1.5 | 1 | 1.5 | 0.375 | 2.4 | 2.875 | 0.00384 | 0.0046 | 0.2304 | 0.276 | 8.1365 | 9.7468 | 8.9417
+7000 RPM | 4,53 V | 56 Db | 50 Db | 600 Hz | 5.6 | 4.4 | 2.4 | 1.4 | 2.2 | 0.6 | 3.36 | 4.2 | 0.005376 | 0.00672 | 0.32256 | 0.4032 | 11.3911 | 14.2389 | 12.8150
+8000 RPM | 5,08 V | 58 Db | 54 Db | 700 Hz | 6.7 | 4.5 | 2.8 | 1.675 | 2.25 | 0.7 | 4.02 | 4.625 | 0.006432 | 0.0074 | 0.38592 | 0.444 | 13.6286 | 15.6797 | 14.6542
+9000 RPM | 5,74 V | 60 Db | 56 Db | 750 Hz | 7.5 | 5.6 | 3.5 | 1.875 | 2.8 | 0.875 | 4.5 | 5.55 | 0.0072 | 0.00888 | 0.432 | 0.5328 | 15.2559 | 18.8157 | 17.0358
+12000 RPM | 8 V | 70 Db | 64 Db | 1000 Hz | 9.6 | 7 | 4.5 | 2.4 | 3.5 | 1.125 | 5.76 | 7.025 | 0.009216 | 0.01124 | 0.55296 | 0.6744 | 19.5276 | 23.8162 | 21.6719
+14000 RPM | 9,61 V | 74 Db | 70 Db | 1200 Hz | 11.4 | 7.4 | 5.2 | 2.85 | 3.7 | 1.3 | 6.84 | 7.85 | 0.010944 | 0.01256 | 0.65664 | 0.7536 | 23.1890 | 26.6131 | 24.9011
+
+#### 3000 RPM / 17,6 CFM / Sunon
+
+RPM | Voltage | Db | Db (2) | Fréq | Centre | Mi | Bord | Centre C | Mi C | Bord C | M/S (1) | M/S (2) | Débit (1) | Débit (2) | Déb(1) m3/s | Déb(2) m3/s | CFM (1) | CFM (2) | CFM Moy
+----|---------|----|--------|------|--------|----|------|----------|------|--------|---------|---------|-----------|-----------|-------------|-------------|---------|---------|---------
+3050 RPM | 12,08 V | 45 Db | 40 Db | | 3.5 | 2.4 | 1.6 | 0.875 | 1.2 | 0.4 | 2.1 | 2.475 | 0.00756 | 0.00891 | 0.4536 | 0.5346 | 16.0187 | 18.8792 | 17.4490
+3020 RPM | 11,97 V | 45 Db | 40 Db | | 3.2 | 2.8 | 1.5 | 0.8 | 1.4 | 0.375 | 1.92 | 2.575 | 0.006912 | 0.00927 | 0.41472 | 0.5562 | 14.6457 | 19.6420 | 17.1439
+2050 RPM | 7,61 V | 40 Db | 38 Db | | 2.5 | 1.3 | 0.9 | 0.625 | 0.65 | 0.225 | 1.5 | 1.5 | 0.0054 | 0.0054 | 0.324 | 0.324 | 11.4420 | 11.4420 | 11.4420
+
+
+
+![image](https://github.com/user-attachments/assets/b1f5eb81-83f2-4d40-903c-95afdaef0d4f)
+
 
 
 ### The Web interface
