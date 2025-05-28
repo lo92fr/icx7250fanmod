@@ -41,7 +41,7 @@ RPM   : 18000 tr/min
 Noise : 55.00 dB (A)
 CFM   : 24.03 CFM
 
-![WhatsApp Image 2025-05-28 à 16 57 00_db6bd5dc](https://github.com/user-attachments/assets/93780589-8178-4ea5-9a74-0bc924a8c2ed)
+![WhatsApp Image 2025-05-28 à 16 57 00_db6bd5dc](https://github.com/user-attachments/assets/93780589-8178-4ea5-9a74-0bc924a8c2ed | width=400 )
 
 
 As you can see, high CFM, but with also very high RPM, and so heavy high frequency noise!
