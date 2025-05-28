@@ -1,0 +1,143 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <title>~TITLE~</title>
+<body>
+  <header>
+    <h1>~TITLE~</h1>
+    <nav>
+      <button class="dropdown" aria-label="Menu">
+        <svg width="30" height="30" viewBox="0 0 100 80" fill="white">
+          <rect width="100" height="15"></rect>
+          <rect y="30" width="100" height="15"></rect>
+          <rect y="60" width="100" height="15"></rect>
+        </svg>
+      </button>
+      <div class="dropdown-content">
+        <a href="/setup">Setup</a>
+        <a href="/edit">Edit</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+      <h2>DHT22</h2>
+      <div class="tiles">
+        <div class="tile">
+          <h2>Température</h2>
+          <p>~TEMP~</p>
+        </div>
+
+        <div class="tile">
+          <h2>Humidité</h2>
+          <p>~HUMIDITE~</p>
+        </div>
+      </div>
+
+       <h2>Fan</h2>
+      
+      <div class="tiles">
+        <div class="tile">
+          <h2>Group fan 1</h2>
+          <p>~Freq0~ HZ</p>
+          <p>~Duty0~ %</p>
+        </div>
+        <div class="container">
+          ~BTNDUTY0~
+          <div style="flex-basis: 100%; height: 0;"></div>
+          ~BTNFREQ0~
+        </div>
+      </div>
+
+      <div class="tiles">
+        <div class="tile">
+          <h2>Group fan 2</h2>
+          <p>~RPM1~ RPM</p>
+          <p>~RPM2~ RPM</p>
+          <p>~RPM3~ RPM</p>
+          <p>~Freq1~ HZ</p>
+          <p>~Duty1~ %</p>
+        </div>
+        <div class="container">
+          ~BTNDUTY1~
+          <div style="flex-basis: 100%; height: 0;"></div>
+          ~BTNFREQ1~
+        </div>
+      </div>
+
+
+      <h2>Header fan</h2>
+      
+      <div class="tiles">
+        <div class="tile">
+          <h2>Header fan 1</h2>
+          <p>~RPM2~ RPM</p>
+          <p>~Freq2~ HZ</p>
+          <p>~Duty2~ %</p>
+        </div>
+        <div class="container">
+          ~BTNDUTY2~
+          <div style="flex-basis: 100%; height: 0;"></div>
+          ~BTNFREQ2~
+        </div>
+      </div>
+
+      <div class="tiles">
+        <div class="tile">
+          <h2>Header fan 2</h2>
+          <p>~RPM3~ RPM</p>
+          <p>~Freq3~ HZ</p>
+          <p>~Duty3~ %</p>
+        </div>
+        <div class="container">
+          ~BTNDUTY3~
+          <div style="flex-basis: 100%; height: 0;"></div>
+          ~BTNFREQ3~
+        </div>
+      </div>
+
+
+
+      <div class="tiles">
+        <div class="tile">
+          <h2>Header fan 3</h2>
+          <p>~RPM4~ RPM</p>
+          <p>~Freq4~ HZ</p>
+          <p>~Duty4~ %</p>
+        </div>
+        <div class="container">
+          ~BTNDUTY4~
+          <div style="flex-basis: 100%; height: 0;"></div>
+          ~BTNFREQ4~
+        </div>
+      </div>
+
+      <div class="tiles">
+        <div class="tile">
+          <h2>GPIO State 2</h2>
+          <p>~GPIO2~</p>
+        </div>
+        <div class="btn">
+          <a href="serverIndex.htm?action=modGPIO2&value=OFF">
+            <p>OFF</p>
+          </a>
+        </div>
+        <div class="btn">
+          <a href="serverIndex.htm?action=modGPIO2&value=ON">
+            <p>ON</p>
+          </a>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </main>
+
+  <footer>
+    <p>Ma barre en bas de page</p>
+  </footer>
+</body>
+</html>

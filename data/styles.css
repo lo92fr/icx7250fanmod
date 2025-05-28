@@ -1,0 +1,171 @@
+body {
+    margin: 0;
+    padding:0;
+    height:100%;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background:#3498db;
+    font-family:sans-serif;
+    font-size:14px;
+    color:#777
+}
+
+header {
+    background-color: #333333;
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+    height:60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav {
+      position: relative;
+    }
+
+.dropdown {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.dropdown img {
+  width: 30px;
+  height: 30px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+nav:hover .dropdown-content {
+  display: block;
+}
+
+main {
+    flex: 1;
+    padding: 2rem;
+    background-color: #3498db;
+}
+
+.tiles {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 2rem;
+  
+}
+
+.tile {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      padding: 1rem 2rem;
+      text-align: center;
+      flex: 1 1 120px;
+      max-width: 150px;
+      vertical-align:middle;
+      
+}
+
+.tile h2 {
+  margin: 0.5rem 0;
+}
+
+
+
+footer {
+    background-color: #333333;
+    color: white;
+    text-align: center;
+}
+
+#file-input,input {
+    width:100%;
+    height:44px;
+    border-radius:4px;
+    margin:10px auto;
+    font-size:15px
+}
+
+input {
+    background:#f1f1f1;
+    border:0;
+    padding:0 15px
+}
+
+#file-input {
+    padding:0;
+    border:1px solid #ddd;
+    line-height:44px;
+    text-align:left;
+    display:block;
+    cursor:pointer
+}
+
+
+#bar,#prgbar {
+    background-color:#f1f1f1;
+    border-radius:10px
+}
+
+#bar  {
+    background-color:#3498db;
+    width:0%;
+    height:10px
+}
+
+
+form {
+    background:#fff;
+    max-width:258px;
+    margin:75px auto;
+    padding:30px;
+    border-radius:5px;
+    text-align:center
+}
+
+.btn {
+    background-color: #4CAF50; 
+    position:relative;
+    border: none; 
+    color:white;
+    max-height: 40px;
+    margin-top:40px;
+    padding: 16px 40px;
+    cursor:pointer;
+    display: inline-block;
+ }
+
+ .container {
+     display: flow-root;
+ }
+
+ a:link {
+  color: white;
+  text-decoration:none;
+}
+
