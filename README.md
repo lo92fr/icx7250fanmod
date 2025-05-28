@@ -6,8 +6,8 @@ A guide to Ruckus ICX7250-48-p fan mode
 The modification will of course wold warranty of your switch.
 An can ever kill the switch if something goes wrong in your modification.
 I'm myself have some wrong things happens durring this mods.
-So lets be warn that it can cost new to buy a new switch if the worst case.
-And that of course, I won't assume any dommage in regards of modification you've made !
+So lets be warn that it can cost you to buy a new switch in the worst case.
+And that said, of course, I will not assume any dommage in regards of modification you've made !
 
 ## parts 
 
