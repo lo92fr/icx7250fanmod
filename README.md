@@ -217,6 +217,30 @@ There will be a captive portal to enable setup of the ESP32 wifi, as weel to do 
 - 3 GPIO input will be used to deliver PWM signal to each 3 existing fan header on the ICX7250 to fool the fan RPM detection.
 - 2 GPIO input will be used to read the yellow tachometer wire from the existing fan to verify the RPM of the fans.
 
+### The Web interface
+
+For now, the interface is for advanced user, enable to modify frequency and duty cycle.
+It was more easy to do the test.
+I will certainly rewrite it to only have 3 or 4 button by fan group with predefined RPM like :
+
+- For back fan : 5000 RPM, 8000 RPM, 10000 RPM & 12000 RPM.
+- For top level fan : 2000 RPM, 3000 RPM.
+
+![image](https://github.com/user-attachments/assets/50f83212-85e7-439b-8cd9-52ce9d8e9c47)
+
+
+The interface have a setup page provider by ESP FS Web Server, where you can setup your Wifi connection.
+![image](https://github.com/user-attachments/assets/a828ffe3-26e6-4401-ab90-a1447d3918f7)
+
+There is also a firmware update page to update the firmeware on-air.
+
+![image](https://github.com/user-attachments/assets/013115aa-718a-4c74-b27a-dbaca2826dfd)
+
+And finally an edit page that enables to modify file system on the esp32:
+
+![image](https://github.com/user-attachments/assets/a4671078-cc60-4ccf-be84-d25edf2e20c2)
+
+
 
 
 ![WhatsApp Image 2025-05-28 à 16 57 00_7e351f3e](https://github.com/user-attachments/assets/d8b38ce2-bf4b-4832-a857-f2f39661493d)
