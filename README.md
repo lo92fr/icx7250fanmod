@@ -436,6 +436,25 @@ RPM | Voltage | Db | Db (2) | Fréq | Centre | Mi | Bord | Centre C | Mi C | Bor
 
 ![image](https://github.com/user-attachments/assets/b1f5eb81-83f2-4d40-903c-95afdaef0d4f)
 
+### Final shoot of the mode
+
+#### Global view
+
+![WhatsApp Image 2025-05-28 à 16 57 02_f199f262](https://github.com/user-attachments/assets/c18548a5-26a0-4ffd-96cb-b4628de7ce06)
+
+#### Zoom on the Mofset driver, Esp32, DHT22 and voltage regulator
+
+![WhatsApp Image 2025-05-28 à 16 57 02_dd424d2d](https://github.com/user-attachments/assets/7e40c40d-6b64-4a29-a495-b2d3c38af47c)
+
+#### The mofset and Esp32 in final position
+
+![WhatsApp Image 2025-05-28 à 16 57 02_39650c9e](https://github.com/user-attachments/assets/62b46c32-c8f8-40ea-9790-5bdc0cb55a61)
+
+#### The DHT22 and voltage regulator
+
+![WhatsApp Image 2025-05-28 à 16 57 02_53a92070](https://github.com/user-attachments/assets/2ace85c0-aba7-4bd5-a1fe-7275d5b7d53e)
+
+
 
 
 ### The Web interface
